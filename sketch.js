@@ -1,32 +1,47 @@
-var marks=[56,89,64,78,19]
-var weight=[90,78,89,88,82]
-console.log(marks[1])
+var sea,ship;
+var seaImg,shipImg;
 
-function marksaverag()
-{
-  var sum=marks[0]+marks[1]+marks[2]+marks[3]+marks[4]
-  var avg= sum/marks.length;
-  console.log(avg)
-}
-function weightavge()
-{
+function preload(){
+  //uncomment the code to add animation to ship 
+
+  shipImg1 = loadAnimation("ship-1.png");
+  //shipImg1 = loadAnimation("ship-1.png");
+  //shipImg1 = loadAnimation("ship-1");
+  //shipImg1 = loadAnimation("ship-1.png","ship-2.png","ship-1.png","ship-2.png");
+  //shipImg1 = loadAnimation("ship-1","ship-2","ship-1","ship-2");
   
-  
-  var sum1=weight[0]+weight[1]+weight[2]+weight[3]+weight[4]
-  var avg1 = sum1/weight.length;
-  console.log(avg1)
+  seaImg = loadImage("sea.png");
 }
 
-function setup() 
-{
+function setup(){
   createCanvas(400,400);
-  marksaverag()
-weightavge()
+  background("blue");
+
+  // Moving background
+  sea=createSprite(400,200);
+  sea.addImage(seaImg);
+  sea.velocityX = -5;
+  sea.scale=0.3;
+
+  
+  ship = createSprite(130,200,30,30);
+  ship.addAnimation("movingShip",shipImg1);
+  ship.scale =0.25;
+  
 }
 
-function draw() 
-{
-background(51);
+function draw() {
+  background(0);
+  sea.velocityX = -3;
 
+  //uncomment code to reset the background
+  if(sea.x < 0){
+    //sea.x = 0;
+    //sea.x = sea.width;
+    //sea.x = sea.width/8;
+    //sea.y = height;
+  }
+
+ 
+  drawSprites();
 }
-
